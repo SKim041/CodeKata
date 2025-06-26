@@ -9,7 +9,7 @@ vector<int> solution(string today, vector<string> terms, vector<string> privacie
     unordered_map<string, int> mapTerms;
     // today의 총 일수
     int t_totalDays = stoi(today.substr(0, 4))*12*28 
-        + stoi(today.substr(5, 2))*28 + stoi(today.substr(8, 2));
+        + (stoi(today.substr(5, 2))-1)*28 + stoi(today.substr(8, 2)) - 1;
     // terms map에 넣기
     for (auto s : terms)
     {
@@ -23,7 +23,7 @@ vector<int> solution(string today, vector<string> terms, vector<string> privacie
         int MM = stoi(privacies[i].substr(5, 2));
         int DD = stoi(privacies[i].substr(8, 2));
         
-        int term_totalDays = YYYY*12*28 + (MM+mapTerms[term])*28 + DD - 1;
+        int term_totalDays = YYYY*12*28 + (MM+mapTerms[term]-1)*28 + DD - 1 - 1;
         
         if (t_totalDays > term_totalDays)
         {
