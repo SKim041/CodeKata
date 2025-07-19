@@ -11,16 +11,10 @@ int solution(vector<vector<string>> clothes) {
     {
         type[item[1]] += 1;
     }
-    vector<int> typeCount;
-    typeCount.reserve(type.size());
-    for(pair<string, int> p:type)
-    {
-        typeCount.push_back(p.second+1);
-    }
 
-    for(int i:typeCount)
+    for(auto p:type)
     {
-       answer*=i;
+       answer*=p.second+1;
     }
     answer-=1;
     return answer;
