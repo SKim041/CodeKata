@@ -37,7 +37,8 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
         sort(temp.begin(), temp.end(), 
              [](const auto& a, const auto& b)
              {
-                 return a.playCount>b.playCount;
+                 if(a.playCount==b.playCount) return a.idx<b.idx;
+                 else return a.playCount>b.playCount;
              });
         
         for(int i=0; i<2; ++i)
